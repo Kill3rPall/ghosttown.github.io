@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>قوانين العصابات - Ghost Town</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,61 +13,118 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4; /* Light background color */
-            color: #333;
+            font-family: 'Tajawal', Arial, sans-serif;
+            color: #fff;
             line-height: 1.6;
+            background: #131313;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                #ff450033,
+                #1a1a1a,
+                #2d2d2d,
+                #ff450033
+            );
+            background-size: 400% 400%;
+            z-index: -1;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         header {
-            background-color: #ff7f50; /* Coral color */
-            padding: 20px;
-            text-align: center;
-            color: white;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: rgba(25, 25, 25, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 69, 0, 0.1);
         }
 
         header h1 {
-            font-size: 2.5em;
+            font-size: 3.5em;
+            color: #fff;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
             margin: 0;
+            animation: fadeInDown 1s ease-out;
+            position: relative;
+            z-index: 1;
         }
 
         nav {
-            display: flex;
-            justify-content: center;
-            background-color: #333;
-            padding: 10px 0;
-            margin-bottom: 20px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 15px 20px;
-            margin: 0 10px;
-            background-color: #ff7f50;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        nav a:hover {
-            background-color: #ff4500;
-            transform: scale(1.1);
-        }
-
-        section {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background: rgba(25, 25, 25, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 69, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             text-align: center;
         }
 
-        section h2 {
-            font-size: 2.5em;
+        nav a {
+            color: #ff4500;
+            text-decoration: none;
+            padding: 12px 25px;
+            margin: 0 5px;
+            background: rgba(255, 69, 0, 0.1);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 69, 0, 0.2);
+            position: relative;
+            display: inline-block;
+        }
+
+        nav a:hover {
             color: #ff7f50;
-            margin-bottom: 20px;
+            background: rgba(255, 69, 0, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.2);
+            border-color: rgba(255, 69, 0, 0.3);
+        }
+
+        section {
+            background: rgba(25, 25, 25, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 69, 0, 0.1);
+            box-shadow: 0 0 30px rgba(255, 69, 0, 0.1);
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 40px;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+        }
+
+        section h2 {
+            font-size: 2.8em;
+            background: linear-gradient(135deg, #ff7f50, #ff4500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+            text-align: center;
         }
 
         section ul {
@@ -78,67 +136,137 @@
         section ul li {
             font-size: 1.2em;
             margin-bottom: 15px;
-            line-height: 1.8;
-            background-color: #f9f9f9;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border-right: 4px solid #ff7f50;
         }
 
-        /* Footer */
+        section ul li:hover {
+            transform: translateX(-5px);
+            background: rgba(255, 255, 255, 0.1);
+            border-right-color: #ff4500;
+        }
+
         footer {
             background-color: #333;
             color: #fff;
             text-align: center;
-            padding: 10px 0;
+            padding: 20px 0;
             margin-top: 40px;
         }
 
         footer p {
             font-size: 0.9em;
         }
+
+        @media (max-width: 768px) {
+            header {
+                height: 200px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            section {
+                padding: 20px;
+                margin: 20px;
+            }
+
+            section h2 {
+                font-size: 2em;
+            }
+
+            section ul li {
+                font-size: 1em;
+                padding: 10px;
+            }
+
+            nav a {
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+        }
+
+        .join-server-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #ff7f50, #ff4500);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3);
+        }
+    
+        .join-server-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 69, 0, 0.4);
+            background: linear-gradient(135deg, #ff4500, #ff7f50);
+        }
+    
+        @media (max-width: 768px) {
+            .join-server-btn {
+                top: 10px;
+                left: 10px;
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+        }
     </style>
 </head>
 <body>
+    <a href="https://cfx.re/join/meaz87" target="_blank" class="join-server-btn">
+        <i class="fas fa-play"></i>
+        انضم للسيرفر
+    </a>
 
-<header>
-    <h1>قوانين العصابات</h1>
-</header>
+    <header>
+        <h1>قوانين العصابات</h1>
+    </header>
 
-<nav>
-    <a href="home.html">الشاشة الرئيسية</a>
-    <a href="police_rules.html">قوانين الشرطة</a>
-    <a href="gang_rules.html">قوانين العصابات</a>
-    <a href="city_rules.html">قوانين المدينة</a>
-    <a href="safe_zones.html">المناطق الآمنة</a>
-    <a href="https://ghostcfw.thta.shop/products" target="_blank">المتجر</a> <!-- New store button -->
-</nav>
+    <nav>
+        <a href="https://kill3rpall.github.io/ghosttown.github.io/home.html">الشاشة لرئيسية</a>
+        <a href="https://kill3rpall.github.io/ghosttown.github.io/police_rules.html">قوانين الشرطة</a>
+        <a href="https://kill3rpall.github.io/ghosttown.github.io/gang_rules.html">قوانين العصابات</a>
+        <a href="https://kill3rpall.github.io/ghosttown.github.io/city_rules.html">قوانين المدينة</a>
+        <a href="https://kill3rpall.github.io/ghosttown.github.io/safe_zones.html">المناطق الآمنة</a>
+        <a href="https://ghostcfw.thta.shop/products" target="_blank">المتجر</a>
+    </nav>
 
-<section>
-    <h2>قوانين العصابات</h2>
-    <ul>
-        <li>يجب احترام جميع أعضاء العصابة وعدم انتهاك خصوصياتهم.</li>
-        <li>ممنوع خيانة أو إفشاء أسرار العصابة.</li>
-        <li>يجب الالتزام بتنفيذ الأوامر التي تصدر من القادة.</li>
-        <li>يمنع الانسحاب من الصراعات بدون إذن مسبق.</li>
-        <li>يجب التعاون مع الأعضاء الآخرين في الأوقات الحرجة.</li>
-        <li>يمنع التعاون مع العصابات الأخرى بدون إذن.</li>
-        <li>يجب التعامل مع المدنيين باحترام وعدم إيذائهم بدون سبب.</li>
-        <li>ممنوع استخدام القوة المفرطة في النزاعات.</li>
-        <li>يجب احترام المناطق المحددة للعصابة وعدم تجاوزها.</li>
-        <li>يمنع الانضمام لعصابات أخرى أثناء الانتماء للعصابة الحالية.</li>
-        <li>يجب الحفاظ على السرية في العمليات الخاصة بالعصابة.</li>
-        <li>يجب احترام القوانين العامة وعدم خرقها.</li>
-        <li>يجب تقديم المساعدة لأعضاء العصابة في الأوقات الصعبة.</li>
-        <li>يمنع التشهير بالأعضاء أو نشر الشائعات.</li>
-        <li>يجب العمل على تعزيز سمعة العصابة في المجتمع.</li>
-        <li>يجب إحاطة القيادة بكل ما يتعلق بأنشطة العصابة.</li>
-    </ul>
-</section>
+    <section>
+        <h2>قوانين العصابات</h2>
+        <ul>
+            <li>يمنع السرقة أو القتل في المناطق الآمنة.</li>
+            <li>يمنع السرقة أو القتل بدون سبب.</li>
+            <li>يمنع السرقة أو القتل بدون تهديد.</li>
+            <li>يمنع السرقة أو القتل بدون تحذير.</li>
+            <li>يمنع السرقة أو القتل بدون إعطاء فرصة.</li>
+            <li>يمنع السرقة أو القتل بدون تفاوض.</li>
+            <li>يمنع السرقة أو القتل بدون سيناريو.</li>
+            <li>يمنع السرقة أو القتل بدون رول بلاي.</li>
+            <li>يمنع السرقة أو القتل بدون تقمص الشخصية.</li>
+            <li>يمنع السرقة أو القتل بدون تقدير الموقف.</li>
+            <li>يمنع السرقة أو القتل بدون احترام الطرف الآخر.</li>
+            <li>يمنع السرقة أو القتل بدون احترام القوانين.</li>
+            <li>يمنع السرقة أو القتل بدون احترام الرول بلاي.</li>
+            <li>يمنع السرقة أو القتل بدون احترام اللعبة.</li>
+            <li>يمنع السرقة أو القتل بدون احترام اللاعبين.</li>
+        </ul>
+        <p class="warning">ملاحظة: مخالفة أي من هذه القوانين قد تؤدي إلى الحظر المؤقت أو الدائم من السيرفر.</p>
+    </section>
 
-<footer>
-    <p>&copy; 2024 جميع الحقوق محفوظة - Ghost Town</p>
-</footer>
-
+    <footer>
+        <p>&copy; 2024 جميع الحقوق محفوظة - Ghost Town</p>
+    </footer>
 </body>
 </html>
